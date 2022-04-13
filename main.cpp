@@ -2,11 +2,17 @@
 #include <string>
 #include "Npc.h"
 #include "Generator.h"
+#include "CharBinder.h"
 
 using namespace std;
 
+CharBinder *charBinder;
+
 int main() 
 {
+    // init charbinder
+    charBinder = new CharBinder();
+
     string input;
 
     cout << "Welcome to C++ Dark Heresy 2 Toolkit";
@@ -45,14 +51,30 @@ int main()
             int willpwr = generator(2);
             int wnds = generator(3);
 
-            Npc npc = Npc(combatAttr, willpwr, wnds);
+            // generate name
+            string name = generateName();
+
+            Npc npc = Npc(name, combatAttr, willpwr, wnds);
             Npc* val = &npc;
+
+            charBinder->addNpc(npc);
 
             cout << "Created new NPC" << endl;
             string res = val->getFullName();
             string npcRes = val->getNpc();
             cout << res << endl;
             cout << npcRes << endl;
+        }
+        else if (input == "4")
+        {
+            charBinder->listAllNpcs();
+        }
+        else if (input == "5")
+        {
+            string searchVal;
+            cout << "Please input the name You're searching for: " << endl;
+            cin >> searchVal;
+            charBinder->searchByName(searchVal);
         }
         else 
         {
