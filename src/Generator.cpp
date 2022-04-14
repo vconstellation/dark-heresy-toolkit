@@ -6,11 +6,11 @@
 using namespace std;
 
 // helper method for the int generator
-int generateAttr(int max, int min)
+int generateAttr(int val1, int val2)
 {
     srand(time(nullptr));
 
-    int attr = rand() % min + max;
+    int attr = rand() % val2 + val1;
 
     return attr;
 }
@@ -50,6 +50,7 @@ int generator(int switchVal)
             res = generateAttr(8, 7);
             cout << to_string(res);
             break;
+
     }
 
     return res;

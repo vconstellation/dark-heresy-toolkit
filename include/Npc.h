@@ -1,37 +1,37 @@
 #ifndef NPC_H
 #define NPC_H
-#include <string>
 
-using namespace std;
+#include <string>
+#include "Weapon.h"
 
 class Npc
 {
-    string fullName;
+    std::string fullName;
     
     // this fills the role for the Melee / Ranged combat;
     int combatAttribute;
 
     int willpower;
 
-    // here should be weapon class;
+    Weapon weapon;
 
     // 7 - 10 + 1d5 
     int wounds;
 public:
     Npc();
-    Npc(string, int, int, int);
+    Npc(std::string, int, int, int, Weapon);
 
     // setters and getters
-    string getNpc();
-    string getFullName();
-    string getWounds();
+    std::string getNpc();
+    std::string getFullName();
+    std::string getWounds();
 
-    bool setFullName(string);
+    bool setFullName(std::string);
 
     // helper methods
 
     // combat roll, takes modifier and rolls against attr
-    string combatRoll(int);
+    std::string combatRoll(int);
 
     // takes dmg, subtracts from the wound;
     int takeDamage(int);

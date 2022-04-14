@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// not sure if this constructor is even required?
 CharBinder::CharBinder()
 {
 
@@ -60,6 +61,7 @@ void CharBinder::listAllNpcs()
     for (it = npcs.begin(); it != npcs.end(); it++)
     {
         cout << ((Npc) (*it)).getNpc() << endl;
+        cout << endl;
     }
 
 

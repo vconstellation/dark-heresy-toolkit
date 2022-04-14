@@ -3,6 +3,7 @@
 #include <string>
 
 std::string generateName();
+int generateAttr(int, int);
 int generator(int);
 
 

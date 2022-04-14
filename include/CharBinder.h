@@ -14,6 +14,8 @@ public:
 
     void addNpc(Npc&);
 
+    // i would like to return npc object here
+    // but not sure how to return it if it's null;
     void searchByName(string);
     
     void listAllNpcs();

@@ -1,5 +1,6 @@
 #include <string>
 #include "Npc.h"
+#include "Weapon.h"
 
 using namespace std;
 
@@ -14,18 +15,21 @@ Npc::Npc()
     wounds = 10;
 }
 
-Npc::Npc(string name, int attr, int theWillpower, int theWounds)
+Npc::Npc(string name, int attr, int theWillpower, int theWounds, Weapon wpn)
 {
     fullName = name;
 
     combatAttribute = attr;
     willpower = theWillpower;
     wounds = theWounds;
+
+    weapon = wpn;
 }
 
 string Npc::getNpc()
 {
-    return "Name: " + fullName + "\n Attribute: " + to_string(combatAttribute) + "\n Willpower: " + to_string(willpower) + "\n Wounds: " + to_string(wounds);
+    return "Name: " + fullName + "\n Attribute: " + to_string(combatAttribute) + "\n Willpower: " + to_string(willpower) + "\n Wounds: " + to_string(wounds)
+     + "\n Weapon: " + weapon.getWeapon();
 }
 
 string Npc::getFullName()

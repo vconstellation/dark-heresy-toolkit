@@ -3,6 +3,8 @@
 #include "Npc.h"
 #include "Generator.h"
 #include "CharBinder.h"
+#include "Weapon.h"
+#include "WeaponGenerator.h"
 
 using namespace std;
 
@@ -54,7 +56,10 @@ int main()
             // generate name
             string name = generateName();
 
-            Npc npc = Npc(name, combatAttr, willpwr, wnds);
+            // generate weapon
+            Weapon wpn = generateWeapon();
+
+            Npc npc = Npc(name, combatAttr, willpwr, wnds, wpn);
             Npc* val = &npc;
 
             charBinder->addNpc(npc);
@@ -75,6 +80,43 @@ int main()
             cout << "Please input the name You're searching for: " << endl;
             cin >> searchVal;
             charBinder->searchByName(searchVal);
+        }
+        // testing weapon here
+        else if (input == "6")
+        {
+            string theName = "Rozkurwiator 3000";
+            list<string> qualities;
+            qualities.push_back("Fajna");
+            qualities.push_back("Szczelajaca");
+            vector<int> damazor;
+            damazor.push_back(10);
+            damazor.push_back(5);
+            int amunicja = 2;
+
+            Weapon bronka = Weapon(theName, qualities, damazor, amunicja);
+
+            cout << "This is get weapon call: " << endl;
+            bronka.getWeapon();
+            string x = bronka.getWeapon();
+            cout << x << endl;
+
+            cout << "This is roll dmg call: " << endl;
+            bronka.rollForDamage();
+
+            cout << "This is roll dmg call: " << endl;
+            bronka.rollForDamage();
+
+            cout << "This is roll dmg call: " << endl;
+            bronka.rollForDamage();
+
+            cout << "This is roll dmg call: " << endl;
+            bronka.rollForDamage();
+
+            cout << "This is reload call: " << endl;
+            bronka.reloadWeapon();
+
+            cout << "This is roll dmg call: " << endl;
+            bronka.rollForDamage();
         }
         else 
         {
