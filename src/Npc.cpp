@@ -1,6 +1,7 @@
 #include <string>
 #include "Npc.h"
 #include "Weapon.h"
+#include "Generator.h"
 
 using namespace std;
 
@@ -40,8 +41,14 @@ string Npc::getFullName()
 string Npc::combatRoll(int modifier)
 {
     // call upon generator here?
+    int roll = generator(4);
 
-    return "Hit successfull: " + to_string(40 - modifier);
+    if (roll < (combatAttribute + modifier))
+    {
+        return "Hit successfull: " + to_string(40 + modifier);
+    }
+
+    return "Hit failed: " + to_string(40 + modifier);
 }
 
 int Npc::takeDamage(int dmg)

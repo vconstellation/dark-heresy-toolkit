@@ -13,11 +13,12 @@ class Npc
 
     int willpower;
 
-    Weapon weapon;
-
     // 7 - 10 + 1d5 
     int wounds;
+
 public:
+    Weapon weapon;
+
     Npc();
     Npc(std::string, int, int, int, Weapon);
 

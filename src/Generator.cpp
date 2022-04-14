@@ -51,6 +51,11 @@ int generator(int switchVal)
             cout << to_string(res);
             break;
 
+        // case 4 - default 1d100 roll
+        case 4:
+            res = generateAttr(1, 100);
+            cout << to_string(res);
+            break;
     }
 
     return res;

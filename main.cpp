@@ -26,11 +26,16 @@ int main()
         cout << "1 - Roll 1d100 with modifier." << endl;
         cout << "2 - Do something else" << endl;
         cout << "3 - Generate random npc" << endl;
+        cout << "4 - List all NPCs" << endl;
+        cout << "5 - Search for NPC by name" << endl;
+        cout << "6 - Fire weapon" << endl;
+        cout << "7 - Make an attack check" << endl;
 
         cin >> input;
 
         if (input == "1")
         {
+            // here should be functionality responsible for making test;
             cout << "Rolling 1d100..." << endl;
         }
         else if (input == "2")
@@ -70,10 +75,12 @@ int main()
             cout << res << endl;
             cout << npcRes << endl;
         }
+        // list all npcs
         else if (input == "4")
         {
             charBinder->listAllNpcs();
         }
+        // search for npc by name
         else if (input == "5")
         {
             string searchVal;
@@ -81,46 +88,37 @@ int main()
             cin >> searchVal;
             charBinder->searchByName(searchVal);
         }
-        // testing weapon here
+        // firing weapon
         else if (input == "6")
         {
-            string theName = "Rozkurwiator 3000";
-            list<string> qualities;
-            qualities.push_back("Fajna");
-            qualities.push_back("Szczelajaca");
-            vector<int> damazor;
-            damazor.push_back(10);
-            damazor.push_back(5);
-            int amunicja = 2;
+            string searchVal;
+            cout << "Please input the name of NPC: " << endl;
+            cin >> searchVal;
+            cout << "Firing weapon..." << endl;
+            
+            Npc foundNpc = charBinder->searchByName(searchVal);
 
-            Weapon bronka = Weapon(theName, qualities, damazor, amunicja);
+            cout << "Found NPC - " << foundNpc.getFullName() << endl;
 
-            cout << "This is get weapon call: " << endl;
-            bronka.getWeapon();
-            string x = bronka.getWeapon();
-            cout << x << endl;
+            foundNpc.weapon.rollForDamage();
+        }
+        else if (input == "7")
+        {
+            string searchVal;
+            int modifier;
+            cout << "Please input the name of NPC: " << endl;
+            cin >> searchVal;
+            cout << "Input modifier: " << endl;
+            cin >> modifier;
+            cout << "Making attack roll..." << endl;
 
-            cout << "This is roll dmg call: " << endl;
-            bronka.rollForDamage();
+            Npc foundNpc = charBinder->searchByName(searchVal);
 
-            cout << "This is roll dmg call: " << endl;
-            bronka.rollForDamage();
-
-            cout << "This is roll dmg call: " << endl;
-            bronka.rollForDamage();
-
-            cout << "This is roll dmg call: " << endl;
-            bronka.rollForDamage();
-
-            cout << "This is reload call: " << endl;
-            bronka.reloadWeapon();
-
-            cout << "This is roll dmg call: " << endl;
-            bronka.rollForDamage();
+            cout << foundNpc.combatRoll(modifier) << endl;
         }
         else 
         {
-            break;
+            return 0;
         }
         
     }

@@ -15,7 +15,7 @@ void CharBinder::addNpc(Npc& npc)
     npcs.push_back(npc);
 }
 
-void CharBinder::searchByName(string searchValue)
+Npc CharBinder::searchByName(string searchValue)
 {
     list<Npc> l;
 
@@ -39,7 +39,7 @@ void CharBinder::searchByName(string searchValue)
         {
             if (((Npc) (*it)).getFullName() == searchValue)
             {
-                cout << (*it).getNpc();
+                return (*it);
             }
         }
     }   

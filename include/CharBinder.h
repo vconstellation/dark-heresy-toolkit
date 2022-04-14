@@ -16,7 +16,7 @@ public:
 
     // i would like to return npc object here
     // but not sure how to return it if it's null;
-    void searchByName(string);
+    Npc searchByName(string);
     
     void listAllNpcs();
 };
